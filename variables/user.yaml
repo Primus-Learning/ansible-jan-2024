@@ -1,0 +1,22 @@
+---
+- name: create user
+  become: true
+  hosts: tomcat
+  tasks:
+    - name: create user
+      user: 
+        name: "{{username}}"
+        password: "{{username}}"
+        home: "{{homedir}}"
+
+- name: create user
+  become: true
+  hosts: tomcat
+  tasks:
+    - name: create user
+      user: 
+        name: "{{username}}"
+        password: "{{username}}"
+        home: "{{homedir}}"
+
+# use --extra-vars to pass values example --extra-vars "name=aziz state=present"

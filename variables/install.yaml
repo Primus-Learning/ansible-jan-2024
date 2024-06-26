@@ -1,0 +1,19 @@
+---
+- name: install package
+  become: true
+  hosts: tomcat
+  tasks:
+    - name: install packages
+      apt:
+        name: "{{name}}"
+        state: "{{state}}"
+
+---
+- name: install package
+  become: true
+  hosts: tomcat
+  tasks:
+    - name: install packages
+      yum:
+        name: "{{name}}"
+        state: "{{state}}"

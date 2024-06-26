@@ -1,0 +1,15 @@
+---
+ - name: Capture output of command
+   hosts: web
+   become: true
+   gather_facts: false
+   tasks:
+   - name: get memory usage
+     shell: "df"
+     register: memory
+   - name: set fact var
+     set_fact:
+       memory: "{{ memory.stdout}}" 
+   - name: print
+     debug: 
+      msg: "{{memory}}"

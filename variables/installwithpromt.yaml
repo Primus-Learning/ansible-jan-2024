@@ -1,0 +1,16 @@
+---
+- name: install package
+  become: true
+  hosts: tomcat
+  vars_prompt:
+    - name: package_name
+      prompt: enter package name
+      private: no
+    - name: state
+      prompt: enter the state of the package ex present to install and absent to uninstall
+      private: no
+  tasks:
+    - name: install packages
+      apt:
+        name: "{{package_name}}"
+        state: "{{state}}"

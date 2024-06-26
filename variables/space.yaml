@@ -1,0 +1,14 @@
+---
+- name: check memory
+  hosts: tomcat
+  become: true
+  tasks:
+  - name: get memory usage
+    shell: "ls -l /home"
+    register: memory
+  - name: set facts
+    set_fact:
+      memory: "{{memory.stdout}}"
+  - name: print memory
+    debug:
+      msg: "{{memory}}"

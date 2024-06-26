@@ -1,0 +1,42 @@
+for Ubuntu
+sudo apt-get install python3 -y 
+sudo apt-get install python3-pip -y
+sudo pip3 install boto3
+pip3 install ansible
+
+for linux
+sudo yum -y install python3
+sudo yum -y install python3-pip
+sudo pip3 install boto3
+pip3 install ansible
+
+Create an inventory directory under /opt and cd into the directory.
+
+sudo mkdir -p /opt/ansible/inventory 
+
+cd /opt/ansible/inventory
+
+Create a file named aws_ec2.yaml in the inventory directory.
+
+sudo vi aws_ec2.yaml
+
+Open /etc/ansible/ansible.cfg file.
+
+sudo vi /etc/ansible/ansible.cfg
+
+Find the [inventory] section and add the following line to enable the ec2 plugin.
+enable_plugins = aws_ec2
+
+create iam role with EC2 access and attach to the ansible controller
+
+ansible all --list-hosts
+ansible-inventory --graph
+ansible all -m ping
+
+if you receive error 
+ERROR! The ec2 dynamic inventory plugin requires boto3 and botocore.
+do the following
+# updating ansible to use python 3 so we can discover boto3 and botocore
+1. rm -rf /usr/bin/ansible
+2. pip3 install ansible
+3. sudo cp -R  ./.local/lib/python3.7/site-packages/ansible /usr/bin/ansible

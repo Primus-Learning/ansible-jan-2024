@@ -1,0 +1,5 @@
+- name: using file module
+  file:
+    path: "{{file_name}}"
+    state: "{{file_state}}"
+    mode: "{{file_permisions}}"

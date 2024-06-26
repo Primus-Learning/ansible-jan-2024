@@ -1,0 +1,9 @@
+---
+- name: Ansible Test Playbook
+  gather_facts: false
+  #mention group name of the inventory
+  hosts: 
+  tasks:
+
+    - name: Run Shell Command
+      command: echo "Hello World"

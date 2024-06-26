@@ -1,0 +1,12 @@
+---
+- name: cat a file and prints the result
+  hosts: web
+  tasks:
+  - name: " cat file "
+    shell: |
+      cat /etc/passwd
+    register: cat_result
+
+  - name: print the result
+    debug: 
+      msg: "{{ cat_result }}"

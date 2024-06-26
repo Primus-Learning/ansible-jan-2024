@@ -1,0 +1,10 @@
+---
+- name: install nginx
+  become: true
+  hosts: tomcat
+  roles:
+   - install_packages 
+   - role: create_user
+     vars: 
+        -  username: elvira
+        - homedir: /home/elvira

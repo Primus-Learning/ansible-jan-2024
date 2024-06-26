@@ -1,0 +1,20 @@
+---
+- name: create file
+  hosts: all
+  user: ansible
+  tasks:
+  - name: create file
+    file:
+      path: /home/ansible/play.tst
+      state: touch
+      mode: 0777
+
+- name: copy file into controller
+  hosts: all
+  user: ansible
+  tasks:
+  - name: fetch file
+    fetch:
+      src: /home/ansible/play.tst
+      dest: /home/ec2-user/
+      flat: yes

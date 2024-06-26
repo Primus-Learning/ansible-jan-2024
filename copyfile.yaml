@@ -1,0 +1,10 @@
+---
+- name: copy files
+  user: ansible
+  hosts: all
+  become: yes
+  tasks:
+  - name: copy files
+    copy: 
+      src: /home/ec2-user/f1
+      dest: /home/asible/

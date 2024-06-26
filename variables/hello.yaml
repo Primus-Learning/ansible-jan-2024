@@ -1,0 +1,13 @@
+---
+- name: Hello world
+  hosts: tomcat
+  become: true
+  vars_files:
+    - vars.yaml
+  tasks:
+  - name: print message
+    debug:
+      msg: 
+        - "My name is {{name}}"
+        - "I am from {{country}}"
+        - "I am learning {{course}}"

@@ -1,0 +1,35 @@
+---
+- name: install jenkins
+  hosts: jenkins
+  become: true
+  tasks:
+    - name: update yum repo
+      yum:
+        update_only: yes
+        update_cache: yes
+    - name: download jenkins repo
+      command: wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo 
+    - name: import key file
+      command: rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+    - name: upgrade yum repo
+      yum:
+        update_only: yes
+        update_cache: yes
+    - name: install jdk 17
+      yum:
+        name: java-17-amazon-corretto
+        state: present
+    - name: install jenkins
+      yum:
+        name: jenkins
+        state: present
+    - name: start jenkins
+      service:
+        name: jenkins
+        state: started
+    - name: enable jenkins
+      service:
+        name: jenkins
+        state: restarted
+
+

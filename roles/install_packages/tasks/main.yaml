@@ -1,0 +1,4 @@
+- name: install packages
+  yum:
+    name: "{{name}}"
+    state: "{{state}}"

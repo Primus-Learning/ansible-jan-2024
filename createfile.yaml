@@ -1,0 +1,10 @@
+---
+- name: create file
+  hosts: all
+  user: ansible
+  tasks:
+  - name: using file module
+    file:
+      path: /home/ansible/play.tst
+      state: touch
+      mode: 0777

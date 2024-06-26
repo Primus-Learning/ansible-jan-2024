@@ -1,0 +1,26 @@
+---
+#by using this playbook you can only install tree package what if you want to install 
+# multiple packages, instead of using multiple plays you can parametarize the package name and other values
+- name: Install software packages
+  hosts: all
+  tasks:
+  - name: Install/uninstall/update etc
+    apt:
+      name: tree
+      state: present
+      update_cache: yes
+
+---
+# to define the var use "{{varname}}"
+
+- name: Install software packages
+  hosts: all
+  become: true
+  tasks:
+  - name: Install
+    apt:
+      name: "{{packagename}}"
+      state: "{{packagestate}}"
+      update_cache: "{{updaterepo}}"
+#we can run the playbook while passing the vars from command line 
+# ansible-playbook  install.yml  --extra-vars "package-name=git package-state=absent update-repo=no"  -b

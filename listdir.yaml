@@ -1,0 +1,7 @@
+---
+- name: list directory
+  hosts: all
+  user: ansible
+  tasks:
+  - name: list files
+    command: ls /home/ansible/

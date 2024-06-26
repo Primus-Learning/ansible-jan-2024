@@ -1,0 +1,3 @@
+- write a playbook with 2 plays
+- first play will contain one task to create a file and
+- second play will contain one task to fetch the created file into the controller
